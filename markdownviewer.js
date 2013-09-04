@@ -15,6 +15,8 @@
        '<div id="markdown-container"></div>'+
 	'<div id="markdown-outline"></div>'+
 	'<div id="markdown-buttons-container">'+
+		'<div id="markdown-expandAll" onclick="var o=document.getElementById(\'markdown-outline\');o.className=o.className.replace(/( ?expand-all ?|$)/, \' expand-all \');"></div>'+
+		'<div id="markdown-collapse" onclick="var o=document.getElementById(\'markdown-outline\');o.className=o.className.replace(/( ?expand-all ?|$)/, \' \');"></div>'+
 		'<div id="markdown-backTop" onclick="window.scrollTo(0,0);"></div>'+
 		'<div id="markdown-raw" onclick="window.location=\'view-source:\' + window.location.href;"></div>'+
 		'<div id="markdown-bottom" onclick="window.scrollTo(0, document.body.scrollHeight);"></div>'+
@@ -58,7 +60,7 @@
 
 			if (levelCount > 0) {
 				for (var j = 0; j < levelCount; j++) {
-					arrOutline.push('<ul>');
+					arrOutline.push('<ul class="collapsed" id="group-' + (id - 1) + '">');
 				}
 			} else if (levelCount < 0) {
 				levelCount *= -1;
@@ -68,6 +70,7 @@
 			};
 			arrOutline.push('<li>');
 			arrOutline.push('<a href="#' + id + '">' + headerText + '</a>');
+			arrOutline.push('<a class="toggle collapsed" href="#group-' + id + '"></a>');
 			arrOutline.push('</li>');
 			lastLevel = level;
 			id++;
@@ -76,6 +79,21 @@
 		var outline = document.getElementById('markdown-outline');
 		if(arrOutline.length > 2){
 			outline.innerHTML = arrOutline.join('');
+			var toggles = outline.getElementsByClassName("toggle");
+			for (var i = 0, len = toggles.length; i < len; i++) {
+				toggles[i].onclick = function() {
+					var target = document.getElementById(this.attributes.href.value.substr(1));
+					if (!target) return;
+					if (/(^| )collapsed($| )/.test(this.className)) {
+						target.className = target.className.replace(/ ?collapsed ?/, " ");
+						this.className = this.className.replace(/ ?collapsed ?/, " ");
+					} else {
+						target.className += " collapsed";
+						this.className += " collapsed";
+					}
+					return false;
+				};
+			}
 			showOutline();
 		}
 		else outline.style.display = 'none';

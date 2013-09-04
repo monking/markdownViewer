@@ -37,6 +37,50 @@
 	margin:3px 0;
 }
 
+#markdown-outline ul.collapsed {
+	display: none;
+}
+
+#markdown-outline.expand-all ul.collapsed {
+	display: block;
+}
+
+#markdown-outline .toggle {
+	margin-left: 0.5em;
+	padding: 0 0.3em;
+	background-color: #FFF;
+}
+
+#markdown-outline .toggle:after {
+	content: "-";
+}
+
+#markdown-outline .toggle.collapsed:after {
+	content: "+";
+}
+
+#markdown-collapse {
+	padding: 5px 5px 5px 5px;
+	width:20px;
+	height:20px;
+	/*background: url(images/top-icon.png) no-repeat 5px 5px; */
+	cursor:pointer;
+}
+#markdown-collapse:after {
+	content: "Co";
+}
+
+#markdown-expandAll {
+	padding: 5px 5px 5px 5px;
+	width:20px;
+	height:20px;
+	/*background: url(images/top-icon.png) no-repeat 5px 5px; */
+	cursor:pointer;
+}
+#markdown-expandAll:after {
+	content: "Ex";
+}
+
 #markdown-backTop {
 	padding: 5px 5px 5px 5px;
 	width:20px;
@@ -198,8 +242,8 @@ pre, code {
 }
 
 code {
-  white-space:nowrap;
   border:1px solid #eaeaea;
+  line-height:1.5em;
   background-color:#f8f8f8;
   border-radiuss:3px;
   -moz-border-radius:3px;
