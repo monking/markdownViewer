@@ -176,6 +176,50 @@ article > :first-child {
   margin-top: 0!important;
 }
 
+.task {
+  white-space: pre;
+  font-family: 'Bitstream Vera Sans Mono','Courier',monospace;
+  font-size: inherit;
+  color: #FFF;
+  padding: 0.1em 0.5em;
+  border-radius: 0.3em;
+}
+.task.normal {
+  background-color: #069;
+}
+.task.next {
+  background-color: #09E;
+}
+.task.active {
+  background-color: #E90;
+}
+.task.bg {
+  background-color: #960;
+}
+.task.urgent {
+  background-color: #F00;
+}
+.task.complete {
+  background-color: #0C0;
+}
+.task.paused {
+  background-color: #631;
+}
+.task.hold {
+  background-color: #000;
+}
+.task.cancelled {
+  background-color: #FFF;
+  color: inherit;
+  outline: 1px solid #CCC;
+}
+.task.question {
+  background-color: #909;
+}
+.task.note {
+  background-color: #999;
+}
+
 h1 {
   font-size:28px;
   margin-bottom:10px;
@@ -308,6 +352,7 @@ table tr th, table tr td
 ul, ol
 {
   margin:15px 0;
+  border-left: 1px solid #ccc;
 }
 
 ul li, ol li

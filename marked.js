@@ -295,6 +295,7 @@ block.token = function(src, tokens, top) {
  */
 
 var inline = {
+  task: /^((['()/.=:!?x~-])\2)/,
   escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
   autolink: /^<([^ >]+(@|:\/)[^ >]+)>/,
   url: noop,
@@ -351,6 +352,29 @@ inline.lexer = function(src) {
     , cap;
 
   while (src) {
+    // task
+    if (cap = inline.task.exec(src)) {
+      src = src.substring(cap[0].length);
+      var task_types = {
+        '((': 'normal',
+        '==': 'next',
+        '))': 'active',
+        '~~': 'bg',
+        '!!': 'urgent',
+        '//': 'complete',
+        '::': 'paused',
+        '..': 'hold',
+        'xx': 'cancelled',
+        '??': 'question',
+        "''": 'note',
+        '--': 'none'
+      };
+      out += '<span class="task ' + task_types[cap[1]] + '">'
+        + cap[1]
+        + '</span>';
+      continue;
+    }
+
     // escape
     if (cap = inline.escape.exec(src)) {
       src = src.substring(cap[0].length);
