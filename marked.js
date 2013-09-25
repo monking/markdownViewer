@@ -295,7 +295,7 @@ block.token = function(src, tokens, top) {
  */
 
 var inline = {
-  task: /^((['()/.=:!?x~-])\2)/,
+  task: /^((['()/.=:!?x~-])\2) /,
   escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
   autolink: /^<([^ >]+(@|:\/)[^ >]+)>/,
   url: noop,
@@ -371,7 +371,7 @@ inline.lexer = function(src) {
       };
       out += '<span class="task ' + task_types[cap[1]] + '">'
         + cap[1]
-        + '</span>';
+        + '</span> ';
       continue;
     }
 
