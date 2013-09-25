@@ -60,7 +60,9 @@
 
 			if (levelCount > 0) {
 				for (var j = 0; j < levelCount; j++) {
-					arrOutline.push('<ul class="collapsed" id="group-' + (id - 1) + '">');
+					// only collapse the outer list if jumping more than one level
+					var collapseClass = (!j ? ' class="collapsed"' : '');
+					arrOutline.push('<ul' + collapseClass + ' id="group-' + (id - 1) + '">');
 				}
 			} else if (levelCount < 0) {
 				levelCount *= -1;
