@@ -356,7 +356,7 @@ inline.lexer = function(src) {
     if (cap = inline.task.exec(src)) {
       src = src.substring(cap[0].length);
       var task_types = {
-        '((': 'normal',
+        '--': 'normal',
         '==': 'next',
         '))': 'active',
         '~~': 'bg',
@@ -366,8 +366,7 @@ inline.lexer = function(src) {
         '..': 'hold',
         'xx': 'cancelled',
         '??': 'question',
-        "''": 'note',
-        '--': 'none'
+        "''": 'note'
       };
       out += '<span class="task ' + task_types[cap[1]] + '">'
         + cap[1]
