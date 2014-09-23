@@ -282,7 +282,7 @@ pre, code {
   border-radius:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
-  padding:6px 10px;
+  padding:0px 0px;
 }
 
 code {
@@ -292,8 +292,8 @@ code {
   border-radiuss:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
-  margin:0 28px;
-  padding:0 5px;
+  margin:0 0px;
+  padding:0 0px;
 }
 
 pre>code
